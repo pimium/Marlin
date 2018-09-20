@@ -60,11 +60,13 @@ HARDWARE_MOTHERBOARD ?= 11
 
 # Arduino source install directory, and version number
 # On most linuxes this will be /usr/share/arduino
-ARDUINO_INSTALL_DIR  ?= ${HOME}/Arduino
-ARDUINO_VERSION      ?= 106
+# ARDUINO_INSTALL_DIR  ?= ${HOME}/Arduino
+ARDUINO_INSTALL_DIR  ?= ../arduino-1.8.7
+ARDUINO_VERSION      ?= 187
 
 # You can optionally set a path to the avr-gcc tools. Requires a trailing slash. (ex: /usr/local/avr-gcc/bin)
 AVR_TOOLS_PATH ?=
+# AVR_TOOLS_PATH ?=${HOME}/Downloads/arduino-1.8.7/hardware/tools/avr/bin/
 
 #Programmer configuration
 UPLOAD_RATE        ?= 57600
@@ -83,11 +85,11 @@ LIQUID_TWI2        ?= 0
 WIRE               ?= 0
 
 # this defines if U8GLIB is needed (may require RELOC_WORKAROUND)
-U8GLIB             ?= 1
+U8GLIB             ?= 0
 
 # this defines whether to add a workaround for the avr-gcc relocation bug
 #	  https://www.stix.id.au/wiki/AVR_relocation_truncations_workaround
-RELOC_WORKAROUND   ?= 1
+RELOC_WORKAROUND   ?= 0
 
 ############################################################################
 # Below here nothing should be changed...
@@ -412,6 +414,7 @@ TARGET = $(notdir $(CURDIR))
 VPATH = .
 VPATH += $(BUILD_DIR)
 VPATH += $(ARDUINO_INSTALL_DIR)/hardware/arduino/avr/cores/arduino
+VPATH += $(ARDUINO_INSTALL_DIR)/hardware/arduino/avr/variants/standard
 
 VPATH += $(ARDUINO_INSTALL_DIR)/hardware/arduino/avr/libraries/SPI
 VPATH += $(ARDUINO_INSTALL_DIR)/hardware/arduino/avr/libraries/SPI/src
