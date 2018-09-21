@@ -367,7 +367,7 @@ static void print_es_state(const bool is_hit, const char * const label=NULL) {
 
 void _O2 Endstops::M119() {
   SERIAL_PROTOCOLLNPGM(MSG_M119_REPORT);
-  #define ES_REPORT(S) print_es_state(READ(S##_PIN) == S##_ENDSTOP_INVERTING, PSTR(MSG_##S))
+  #define ES_REPORT(S) print_es_state(READ(S##_PIN) != S##_ENDSTOP_INVERTING, PSTR(MSG_##S))
   #if HAS_X_MIN
     ES_REPORT(X_MIN);
   #endif
